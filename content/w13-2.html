@@ -2,7 +2,7 @@
         <head>
         <title>cp_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,11 +141,37 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW 2 Exam << <a href='HW 2 Exam.html'>Previous</a> <a href='HW 3 Exam.html'>Next</a> >> HW 3 Exam<br /><h1>HW 3</h1>
-<h4>主題: Python 的數字、演算法與迴圈 (20%)</h4>
-<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 4 and Part 5</p>
-<p>完成上述流程整理後, 請將 HW3 自評分數輸入 cp2024 自評表單中.</p>
-<br />HW 2 Exam << <a href='HW 2 Exam.html'>Previous</a> <a href='HW 3 Exam.html'>Next</a> >> HW 3 Exam</div>
+    <div id="tipue_search_content">w13-1 << <a href='w13-1.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw<br /><h1>w13-2</h1>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+ 
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+ctx.strokeStyle = 'red'
+ctx.beginPath() 
+ctx.rect(0, 0, 200, 200)
+ctx.stroke()
+</script>
+</p><br />w13-1 << <a href='w13-1.html'>Previous</a> <a href='w13_hw.html'>Next</a> >> w13_hw</div>
         
     <!-- footer -->
       <div class="container">
