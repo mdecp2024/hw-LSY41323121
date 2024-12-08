@@ -57,6 +57,106 @@
 <p><span>第二題解答:</span><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/dc33bc902240fb1b07d7e4109b446aa2/raw/1021beb7e7c4707ee53c1384264608b7701fdf7f/hw2.py">網頁上的方格與塗色</a></p>
 <p>3. 完成上列題目後, 請利用 Youtube 影片<span>簡報</span>個人的解題過程與心得.</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="360" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/FnlTKJtwtJg" title="w11 41323121題目一、二詳解" width="640"></iframe></p>
+<h3>w12_hw</h3>
+<p>1. 請各組組員分別利用 Brython 以及 Jupyter lab 環境, 執行可攜程式 notebook 目錄中的 01_string_input_print.ipynb 至 10_for_search.ipynb 筆記本程式, 完成後請將能在 Brython 執行的程式碼存入個人 Gist 後, 將各程式執行連結放入 w12_hw 網頁上. 最後請說明各範例中所使用的程式語法以及執行心得.</p>
+<p>第四題:list_append_remove</p>
+<p>範例:<a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/b77690402abcf0dd733278356ebbd85f/raw/968b089b501c04a55fc710e5970a43aca5da015a/hw4.py">購物清單</a></p>
+<p>說明:顯示目前的購物清單,提示使用者輸入想要新增的項目。 如果該項目已經在清單中，顯示已存在；如果沒有，將其添加到清單中,提示使用者輸入要刪除的項目。 如果該項目存在於清單中，就將其刪除，並顯示更新後的清單。如果該項目不在清單中，顯示錯誤訊息。</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">shopping_list = ["milk", "bread", "eggs"]  # 初始購物清單
+print("Current shopping list:", shopping_list)  # 顯示當前購物清單
+
+new_item = input("Enter an item to add to the shopping list: ")  # 提示使用者輸入想加入的物品
+
+# 檢查新項目是否已在清單中
+if new_item in shopping_list:
+    print(f"{new_item} is already in the shopping list.")  # 提示此項目已存在
+else:
+    shopping_list.append(new_item)  # 否則將新項目加入清單
+    print(f"{new_item} has been added.")
+
+print("Updated shopping list:", shopping_list)  # 顯示更新後的清單
+
+item_to_remove = input("Enter an item to remove from the shopping list: ")  # 提示使用者輸入要刪除的物品
+
+# 檢查要刪除的項目是否在清單中
+if item_to_remove in shopping_list:
+    shopping_list.remove(item_to_remove)  # 如果在清單中，將其刪除
+    print(f"{item_to_remove} has been removed.")
+else:
+    print(f"{item_to_remove} is not in the shopping list.")  # 如果不在清單中，提示錯誤訊息
+
+print("Final shopping list:", shopping_list)  # 顯示最終的清單
+</pre>
+<p><span>第五題:</span><span>05_list_index_pop_insert</span></p>
+<p><span>範例:<a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/30fe34308067f1375c7fdd71a18389f0/raw/8b5df3ae317a9eb071cf6146bea5039069f17c97/hw5.py">點餐</a></span></p>
+<p><span>說明:這段程式碼的目的是處理一個包含食物名稱的串列 (<code>menu_items</code>)，以檢查是否存在特定的元素並替換它。如果找到指定的項目，程式會先移除該項目，然後在相同位置插入一個新的項目。</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">menu_items = ["pizza", "soup", "tea"]  # 設定一個串列到變數裡
+print("Current menu:", menu_items)  # 列印 menu_items
+
+# 使用 index 尋找串列裡的指定元素
+item_to_change = "soup"
+if item_to_change in menu_items:
+    item_index = menu_items.index(item_to_change)  # 獲取元素的索引值
+    print(f"Index of '{item_to_change}':", item_index)  # 顯示索引值
+
+    # 使用 pop 刪除索引值對應的元素
+    removed_item = menu_items.pop(item_index)
+    print(f"Removed '{removed_item}' from the menu.")
+    print("Menu after removal:", menu_items)  # 列印刪除後的 menu
+
+    # 使用 insert 在同一索引值加入新元素
+    new_item = "garlic bread"
+    menu_items.insert(item_index, new_item)
+    print(f"Added '{new_item}' to the menu.")
+    print("Updated menu:", menu_items)  # 列印更新後的 menu
+else:
+    print(f"'{item_to_change}' not found in the menu.")  # 如果元素不存在，顯示錯誤信息
+</pre>
+<p><span>第六題:06_list_slicing</span></p>
+<p><span>範例:<a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/f08c32875b35d9ec940b795388c25e5b/raw/9fa942129c7bf82fea8636641a58b8c1140f174b/hw6.py">城市</a></span></p>
+<p><span>說明:</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">countries = ["USA", "Czech Republic", "South Africa", "Japan", "Australia"]  # 設定一個串列
+print(countries)  # 列印串列裡的元素
+print(countries[1])  # 印出串列裡索引值1的元素
+print(countries[0:3])  # 印出串列裡索引值0~2的元素
+print(countries[0:5:2])  # 印出串列裡索引值範圍0~4, 間隔2的元素
+print(countries[:2])  # 未設定起始索引值默認取0開始, 印出索引值0~1的元素
+print(countries[2:])  # 未設定末端索引值默認取到最後, 印出索引值2~最後的元素
+print(countries[3])  # 印出串列裡索引值3的元素
+print(countries[-1])  # 印出串列裡索引值從後面往前數第1個的元素
+print(countries[-3:-1])  # 印出串列裡索引值從後面往前數第3個開始, 到倒數第2個結束的元素
+print(countries[::-1])  # 倒序列印整個串列的元素</pre>
+<p></p><h2>w13</h2>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+ 
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+ctx = canvas.getContext("2d")
+ctx.lineWidth = 1
+ctx.strokeStyle = 'red'
+ctx.beginPath() 
+ctx.rect(0, 0, 200, 200)
+ctx.stroke()
+</script>
+</p>
 <h2>w13</h2>
 <div id="brython_div1"></div>
 <!-- 導入 brython 程式庫 -->
@@ -87,7 +187,8 @@ ctx.beginPath()
 ctx.rect(0, 0, 200, 200)
 ctx.stroke()
 </script>
-</p><h2>w13</h2>
+</p>
+<h3>w13_hw</h3>
 <div id="brython_div1"></div>
 <!-- 導入 brython 程式庫 -->
 <p>
@@ -101,6 +202,9 @@ window.onload=function(){
 brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
+</p>
+<div id="brython_div1"></div>
+<p>
 <script type="text/python3">
 from browser import html
 from browser import document as doc
@@ -112,47 +216,23 @@ brython_div <= canvas
 
 ctx = canvas.getContext("2d")
 ctx.lineWidth = 1
-ctx.strokeStyle = 'red'
+
+ctx.strokeStyle = 'blue'
 ctx.beginPath() 
-ctx.rect(0, 0, 200, 200)
+ctx.moveTo(10,10)
+ctx.lineTo(210,210)
 ctx.stroke()
 </script>
-</p><h3>w13_hw</h3>
-<p>2.<i-- --="" brython=""> 3.
-<script src="/static/brython.js">
-</script>
-4.<script src="/static/brython_stdlib.js"> < / script>
-5.＜！--啟動 Brython -->
-6.<script>
-7.-window.onload=function(){
-8.brython ({debug: 1, pythonpath:['/static/',./../downloads/py/']});
-9.}
-10.</script>
-11.&lt;--墨布定位點--&gt;
-<div id="brython_div1">
-</div>利用 Brython 繪圖--&gt;
-<script type="text/python"> from browser import html
-from browser import document as doc
-#利用 html 建立 canvas 超文件物件
-canvas = html.CANVAS（width=400, height=400）
-brython_div = doc["brython_div1"]
-brython div <= canvas
-ctx = canvas.getContext("2d")
-ctx.lineWidth = 1
-ctx.strokeStyle = 'blue'
-ctx.beginPath()
-ctx.moveTo(10, 10)
-ctx.lineTo(100, 100)
-ctx.stroke)
-</script>
-</i--></p><h1>HW 2</h1>
+</p>
+<h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
 <p>延續 HW 1 網頁資料整理與程式練習方法, 整理下列內容 (20%):</p>
 <p>PART 2: Introduction to lists and if/else statements</p>
 <p>PART 3: Introduction to the for loop</p>
-<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p><h2>HW 2 Exam</h2>
+<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
+<h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h1>HW 3</h1>
