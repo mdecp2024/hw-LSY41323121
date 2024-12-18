@@ -49,7 +49,8 @@
 <p></p>
 <h3>w7</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/kvMIkTN1CSA" title="41323121 設計一甲 林紹彥 w7" width="853"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="479" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8HhHCQNCl54" title="四設計一甲 41323121  python" width="891"></iframe></p><h3>w10</h3>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="479" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8HhHCQNCl54" title="四設計一甲 41323121  python" width="891"></iframe></p>
+<h3>w10</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/bgXqTCfQkbY" title="國立虎尾科技大學機械設計工程系 - 計算機程式 - 題目一:41323121" width="853"></iframe><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/N2wF1jfG4lA" title="國立虎尾科技大學機械設計工程系 - 計算機程式 - 題目二:41323121" width="853"></iframe></p>
 <p>在 Python 中，變數命名規則：</p>
 <ol>
@@ -167,6 +168,90 @@ ctx.rect(0, 0, 200, 200)
 ctx.stroke()
 </script>
 </p>
+<p><br/><br/>w14_ex</p>
+<p><span>請根據兩個圓繪圖所圍成的區域(目前圍成三個區域, 但若圓心移動可能彼此獨立)進行不同顏色著色, 條件是當各圓半徑與圓心座標變動時, 程式只需輸入兩個圓的圓心座標與半徑, 就可以完成各區域的著色任務. 參考範例 多個圓相交區域著色範例</span></p>
+<p><span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import random
+import math
+
+# 初始化畫布
+def initialize_canvas(canvas_width=400, canvas_height=400, id="brython_div1"):
+    """
+    初始化一個畫布，返回畫布和 2D 繪圖上下文
+    """
+    canvas = html.CANVAS(width=canvas_width, height=canvas_height)
+    brython_div = doc[id]  # 獲取指定 ID 的 DIV
+    brython_div &lt;= canvas  # 插入畫布到該 DIV
+    ctx = canvas.getContext("2d")
+    return canvas, ctx
+
+# 隨機顏色生成器
+def random_color():
+    """
+    返回一個隨機 RGB 顏色
+    """
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return f"rgb({r},{g},{b})"
+
+# 判斷點是否在圓內
+def is_point_in_circle(px, py, cx, cy, r):
+    """
+    判斷點 (px, py) 是否在圓心 (cx, cy) 半徑為 r 的圓內
+    """
+    return (px - cx) ** 2 + (py - cy) ** 2 &lt;= r ** 2
+
+# 繪製三個圓並填充區域
+def draw_three_circles(c1, c2, c3):
+    """
+    使用三個圓的參數進行區域填充。
+    c1, c2, c3: 每個圓的參數，格式為 (x, y, r)
+    """
+    canvas, ctx = initialize_canvas(400, 400)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    
+    color_map = {}
+    circles = [c1, c2, c3]
+    
+    for y in range(canvas.height):
+        for x in range(canvas.width):
+            # 判斷該點在哪些圓內
+            region = tuple(is_point_in_circle(x, y, *circle) for circle in circles)
+            
+            if region not in color_map:
+                color_map[region] = random_color()
+            
+            ctx.fillStyle = color_map[region]
+            ctx.fillRect(x, y, 1, 1)
+
+# 取得三個圓的參數
+def get_circle_input():
+    """
+    模擬獲取三個圓的參數，返回一個圓參數列表
+    """
+    return [
+        (150, 150, 100),  # 圓1 (x, y, r)
+        (250, 150, 100),  # 圓2 (x, y, r)
+        (200, 250, 100)   # 圓3 (x, y, r)
+    ]
+
+# 主程式
+def main():
+    """
+    程式入口，畫出三個圓
+    """
+    print("開始繪製三個圓的交疊區域...")
+    circles = get_circle_input()
+    draw_three_circles(*circles)
+    print("繪製完成！")
+
+# 執行主程式
+main()
+</pre>
+<p><span> </span></p>
 <h2>w13</h2>
 <div id="brython_div1"></div>
 <!-- 導入 brython 程式庫 -->
@@ -305,15 +390,7 @@ ctx.lineTo(210,210)
 ctx.stroke()
 </script>
 </p>
-<h1>HW 2</h1>
-<h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
-<p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
-<hr/>
-<p>延續 HW 1 網頁資料整理與程式練習方法, 整理下列內容 (20%):</p>
-<p>PART 2: Introduction to lists and if/else statements</p>
-<p>PART 3: Introduction to the for loop</p>
-<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
-<h2>HW 2 Exam</h2>
+<h1>HW 2 Exam</h1>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h1>HW 3</h1>
