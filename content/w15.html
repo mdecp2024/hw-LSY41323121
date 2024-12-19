@@ -142,7 +142,33 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>w15</h1>
-<br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+<p>題目一:<span>從 1 累加到 100</span></p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/f3424ed0368752531d910a74dd7fb4bf/raw/3ef48b2925f171bbf837d234c9a3ad16a7e875cf/hw1.py">題目一的連結</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># sum 初始值設為 0
+# sum 為全域變數
+sum = 0
+
+def add_range(init, upto):
+    total = 0
+    # 利用 for 重複迴圈與變數加法進行累加
+    for i in range(init, upto + 1):
+        total += i
+    
+    print(f"從 {init} 累加到 {upto} = {total}")
+    
+    return total
+
+# 設定初始值和終止值
+init, upto = 1, 100
+# 累加範圍 1 到 30
+sum1_30 = add_range(init, 30)
+# 累加範圍 31 到 100
+sum31_100 = add_range(31, upto)
+
+# 顯示最終結果
+print(f"從 {init} 累加到 {upto} = {sum1_30 + sum31_100}")
+</pre>
+<p></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
         
     <!-- footer -->
       <div class="container">
