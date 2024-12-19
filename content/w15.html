@@ -142,8 +142,8 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>w15</h1>
-<p>題目一:<span>從 1 累加到 100</span></p>
-<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/f3424ed0368752531d910a74dd7fb4bf/raw/3ef48b2925f171bbf837d234c9a3ad16a7e875cf/hw1.py">題目一的連結</a></p>
+<p>題目一</p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/f3424ed0368752531d910a74dd7fb4bf/raw/3ef48b2925f171bbf837d234c9a3ad16a7e875cf/hw1.py"><span>從 1 累加到 100</span>  </a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># sum 初始值設為 0
 # sum 為全域變數
 sum = 0
@@ -168,7 +168,28 @@ sum31_100 = add_range(31, upto)
 # 顯示最終結果
 print(f"從 {init} 累加到 {upto} = {sum1_30 + sum31_100}")
 </pre>
-<p></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+<p><span>題目二</span></p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/6d726b751823e7fb571e69afe2011810/raw/5a9b3b8149baefc2a62d0ea7645b4ae554e08623/hw1.py">addto</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># sum 初始值設為 0
+# sum 為全域變數
+sum = 0
+
+def addto(init, upto):
+    total = 0
+    # 利用 for 重複迴圈與變數加法進行累加
+    for i in range(init, upto + 1):
+        total += i
+    
+    print(f"從 {init} 累加到 {upto} = {total}")
+    
+    return total
+
+# 呼叫 addto 函式計算 1 到 100 的總和
+sum1_100 = addto(1, 100)
+
+# 顯示最終結果
+print(f"從 1 累加到 100 = {sum1_100}")</pre>
+<p><span></span></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
         
     <!-- footer -->
       <div class="container">
