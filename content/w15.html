@@ -189,7 +189,23 @@ sum1_100 = addto(1, 100)
 
 # 顯示最終結果
 print(f"從 1 累加到 100 = {sum1_100}")</pre>
-<p><span></span></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
+<p><span></span>題目四</p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/2156c2b499432388c25fb009010f2f80/raw/7a49a6594c0a22ffd0dccb5eb99d915340bfee3f/hw1.py">add_avoid_8</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(init, addto):
+    sum = 0
+    for i in range(init, addto + 1):
+        # Check if the number contains the digit "8"
+        if "8" in str(i):
+            continue  # Skip numbers that contain '8'
+        else:
+            sum += i  # Add the number to the sum if it doesn't contain '8'
+    return sum
+
+# Test the function
+result = add_avoid_8(1, 100)
+print(result)
+</pre>
+<p></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
         
     <!-- footer -->
       <div class="container">
