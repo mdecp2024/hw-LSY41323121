@@ -143,68 +143,56 @@ img.add_border {
         </header>
     <div id="tipue_search_content">w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13<br /><h1>w15</h1>
 <p>題目一</p>
-<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/f3424ed0368752531d910a74dd7fb4bf/raw/3ef48b2925f171bbf837d234c9a3ad16a7e875cf/hw1.py"><span>從 1 累加到 100</span>  </a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># sum 初始值設為 0
-# sum 為全域變數
-sum = 0
-
-def add_range(init, upto):
-    total = 0
-    # 利用 for 重複迴圈與變數加法進行累加
-    for i in range(init, upto + 1):
-        total += i
-    
-    print(f"從 {init} 累加到 {upto} = {total}")
-    
-    return total
-
-# 設定初始值和終止值
-init, upto = 1, 100
-# 累加範圍 1 到 30
-sum1_30 = add_range(init, 30)
-# 累加範圍 31 到 100
-sum31_100 = add_range(31, upto)
-
-# 顯示最終結果
-print(f"從 {init} 累加到 {upto} = {sum1_30 + sum31_100}")
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/9b434d02fa800ec286f1e85e9b90b31e/raw/057df54b5f27d53164bedde7df817b725e918c66/hw1.py"><span>從 1 累加到 100</span>  </a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sum_result = 0  # 建立變數 sum_result
+i = 1  # 指定 i 等於 1
+while i &lt;= 100:  # 使用 while 迴圈加總 1 到 100
+    sum_result += i
+    i += 1
+print(sum_result)  # 輸出結果
 </pre>
 <p><span>題目二</span></p>
-<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/6d726b751823e7fb571e69afe2011810/raw/5a9b3b8149baefc2a62d0ea7645b4ae554e08623/hw1.py">addto</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># sum 初始值設為 0
-# sum 為全域變數
-sum = 0
-
-def addto(init, upto):
-    total = 0
-    # 利用 for 重複迴圈與變數加法進行累加
-    for i in range(init, upto + 1):
-        total += i
-    
-    print(f"從 {init} 累加到 {upto} = {total}")
-    
-    return total
-
-# 呼叫 addto 函式計算 1 到 100 的總和
-sum1_100 = addto(1, 100)
-
-# 顯示最終結果
-print(f"從 1 累加到 100 = {sum1_100}")</pre>
-<p><span></span>題目四</p>
-<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/2156c2b499432388c25fb009010f2f80/raw/7a49a6594c0a22ffd0dccb5eb99d915340bfee3f/hw1.py">add_avoid_8</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(init, addto):
-    sum = 0
-    for i in range(init, addto + 1):
-        # Check if the number contains the digit "8"
-        if "8" in str(i):
-            continue  # Skip numbers that contain '8'
-        else:
-            sum += i  # Add the number to the sum if it doesn't contain '8'
-    return sum
-
-# Test the function
-result = add_avoid_8(1, 100)
-print(result)
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/693ef5f2121c6f2a49e07c637ebdf311/raw/f6f82b917dbafde278a5500b6be6703e84e1acbf/hw2.py">addto</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 運算程式
+def addto(start, end):   # 定義函數 addto，接受兩個參數 start 和 end
+    sum_result = 0       # 設定變數 sum_result，初始值為 0，用於儲存累加結果
+    i = start            # 設定變數 i 的初始值為 start，作為計數器
+    while i &lt;= end:      # 使用 while 迴圈，條件為 i 小於或等於 end
+        sum_result += i  # 將目前的 i 值加到 sum_result 中
+        i += 1           # 將 i 的值加 1，進行下一次的迴圈
+    return sum_result    # 終止函數運行並返回計算結果 sum_result
+     
+# 調用程式
+result = addto(1, 100)   # 調用函數 addto，設定起始值為 1，結束值為 100
+print(result)            # 列印函數返回的結果 result
 </pre>
+<p>題目三</p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/7db0d7f2cf9331d1ea363c24425c0d8e/raw/197e168b223d83d547b03dbee38f9bf04c7b34e6/hw3.py">add_only_even</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def sum_of_numbers(start, end):
+    """
+    計算從 start 到 end 的總和
+
+    Args:
+        start (int): 起始值
+        end (int): 結束值
+
+    Returns:
+        int: 從 start 到 end 的總和
+    """
+    sum_result = 0  # 建立變數 sum_result，初始值為 0
+    i = start  # 初始化 i，設為起始值
+    while i &lt;= end:  # 使用 while 迴圈，條件為 i 小於或等於結束值
+        sum_result += i  # 將 i 累加到 sum_result
+        i += 1  # 將 i 的值加 1，進行下一次的迴圈
+    return sum_result  # 返回最終的總和
+
+# 呼叫函式並輸出結果
+result = sum_of_numbers(1, 100)
+print(result)  # 輸出從 1 到 100 的總和 (答案 5050)</pre>
+<p></p>
+<p><span></span></p>
+<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"></pre>
 <p></p><br />w14_ex << <a href='w14_ex.html'>Previous</a> <a href='w13.html'>Next</a> >> w13</div>
         
     <!-- footer -->
