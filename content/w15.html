@@ -189,7 +189,21 @@ print(result)            # 列印函數返回的結果 result
 # 呼叫函式並輸出結果
 result = sum_of_numbers(1, 100)
 print(result)  # 輸出從 1 到 100 的總和 (答案 5050)</pre>
-<p></p>
+<p><span>題目四</span></p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/99b7a56a531d17b06305a4132e61d100/raw/c5fca01d7efdf563d13fbcc97cbf41361d6fdeeb/hw3.py">add_avoid_8</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def avoid8(init, addto):
+    total = 0
+    for i in range(init, addto + 1):
+        # 判斷數值中是否有 "8"
+        if "8" in str(i):
+            continue  # 跳過包含 "8" 的數字
+        total += i  # 累加不包含 "8" 的數字
+    return total  # 返回最終結果
+
+# 測試函式
+result = avoid8(1, 100)
+print(result)  # 輸出總和，應該是 3763
+</pre>
 <p><span></span></p>
 <p></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"></pre>
