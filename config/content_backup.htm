@@ -568,7 +568,7 @@ ctx.fill()
 </script>
 </p>
 <h1>HW 3</h1>
-<h2>w16_exam2</h2>
+<h3>w16_exam2</h3>
 <p><span>題目一: 請以</span><span>自己的學號最後四碼</span><span>作為下列繪圖的左上方點座標, (例如: 若學號最後四碼為 3932, 請將 (39, 32) 作為繪圖左上方點座標), 並以紅色文字標示出該點座標 (例如: (39, 32)), 之後請利用 </span><span>pixel=2 的藍色直線</span><span>, </span><span>自訂迷宮畫布大小</span><span>, 直接在頁面畫出下列圖像, 繪圖程式除了必須直接列在頁面 html 檔案外, 也請存入自己的 Gist 區域, 並在所完成的圖像下方, 以自選標題的 anchor 連結至 Gist, 讓使用者點擊該連結後, 可以在各自的 Brython 頁面中繪出下列圖像).</span></p>
 <p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/3b1e96630c957b291a251284ddf5c7c1/raw/4977aee47cd4368b56c233fc2410cd7203b60450/hw1.py">w16_exam2</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
@@ -703,11 +703,9 @@ def draw_blue_rectangles(x, y, scale):
 scale = 1  # 你可以更改這個數字來調整縮放比例
 draw_blue_rectangles(blue_start_x, blue_start_y, scale)
 </script>
-</p>
-<h2>HW 3 Exam</h2>
+</p><h2>HW 3 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
-<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<h1>HW 4</h1>
+<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p><h1>HW 4</h1>
 <h4>主題: 利用 Python 控制機電模擬系統 (20%)</h4>
 <p style="padding-left: 30px;">利用 <a href="https://solvespace.com/">https://solvespace.com/</a> 建立機械系統零組件</p>
 <p style="padding-left: 30px;">利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 建立機電模擬系統</p>
@@ -720,7 +718,206 @@ draw_blue_rectangles(blue_start_x, blue_start_y, scale)
 <h3>w16_exam3</h3>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 4 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/dbb9a2c963082f0d0c3c8c991e69e596/raw/e9b962eb00121bd1381d91fae16dd789786cdb3f/hw1.py">迷宮出口</a></p>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/10bfa72ca9571014cafe8ab272872be9/raw/1837f24c5437dd58e2d9a2e3f4064d62da593ff5/hw1.py">迷宮出口</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/6Su-P4XNJ_c" title="四設計一甲  林紹彥 41323121  w16_exam2" width="853"></iframe></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+ 
+# 設定迷宮畫布大小
+canvas = html.CANVAS(width=300, height=300)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+ 
+# 取得 canvas 的繪圖上下文
+ctx = canvas.getContext("2d")
+ 
+# 標示左上方點座標 (31, 21)
+ctx.font = "12px Arial"
+ctx.fillStyle = "red"
+ctx.fillText("(31, 21)", 35, 35)
+ 
+# 定義藍色線條的屬性
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ 
+# 設定迷宮起點的偏移量
+offset_x, offset_y = 31, 21
+ 
+# 迷宮的線條座標
+maze_lines = [
+    ((0, 0), (86, 0)),
+    ((0, 0), (0, 200)),
+    ((120, 0), (200, 0)),
+    ((200, 0), (200, 200)),
+    ((120, 200), (200, 200)),
+    ((0, 200), (86, 200)),
+    ((86, 157), (86, 200)),
+    ((86, 157), (126, 157)),
+    ((160, 120), (160, 200)),
+    ((160, 120), (50, 120)),
+    ((50, 120), (50, 163)),
+    ((126, 80), (126, 120)),
+    ((0, 80), (86, 80)),
+    ((86, 40), (86, 80)),
+    ((40, 40), (160, 40)),
+    ((160, 40), (160, 83)),
+]
+ 
+# 使用輔助函數來簡化畫線的過程
+def draw_line(start, end):
+    ctx.moveTo(offset_x + start[0], offset_y + start[1])
+    ctx.lineTo(offset_x + end[0], offset_y + end[1])
+ 
+# 繪製迷宮
+ctx.beginPath()
+for start, end in maze_lines:
+    draw_line(start, end)
+ctx.stroke()
+ 
+# 定義紅色路徑屬性
+ctx.strokeStyle = "red"
+ctx.lineWidth = 3
+ 
+# 解答路徑
+path_solution = [
+    (100, 0),    
+    (100, 20),   
+    (180, 20),  
+    (180, 100),  
+    (140, 100), 
+    (140, 60), 
+    (100, 60),
+    (100, 100),
+    (25, 100),
+    (25, 180),
+    (65, 180),
+    (65, 140),
+    (140, 140),
+    (140, 180),
+    (100, 180),
+    (100, 200),
+]
+ 
+# 繪製紅色路徑
+ctx.beginPath()
+for i in range(len(path_solution) - 1):
+    start = path_solution[i]
+    end = path_solution[i + 1]
+    draw_line(start, end)
+ctx.stroke()
+</pre>
+<p></p>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+    brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=500, height=500)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+# 取得 canvas 的繪圖上下文
+ctx = canvas.getContext("2d")
+from browser import html
+from browser import document as doc
+ 
+# 設定迷宮畫布大小
+canvas = html.CANVAS(width=300, height=300)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ 
+# 取得 canvas 的繪圖上下文
+ctx = canvas.getContext("2d")
+ 
+# 標示左上方點座標 (31, 21)
+ctx.font = "12px Arial"
+ctx.fillStyle = "red"
+ctx.fillText("(31, 21)", 35, 35)
+ 
+# 定義藍色線條的屬性
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ 
+# 設定迷宮起點的偏移量
+offset_x, offset_y = 31, 21
+ 
+# 迷宮的線條座標
+maze_lines = [
+    ((0, 0), (86, 0)),
+    ((0, 0), (0, 200)),
+    ((120, 0), (200, 0)),
+    ((200, 0), (200, 200)),
+    ((120, 200), (200, 200)),
+    ((0, 200), (86, 200)),
+    ((86, 157), (86, 200)),
+    ((86, 157), (126, 157)),
+    ((160, 120), (160, 200)),
+    ((160, 120), (50, 120)),
+    ((50, 120), (50, 163)),
+    ((126, 80), (126, 120)),
+    ((0, 80), (86, 80)),
+    ((86, 40), (86, 80)),
+    ((40, 40), (160, 40)),
+    ((160, 40), (160, 83)),
+]
+ 
+# 使用輔助函數來簡化畫線的過程
+def draw_line(start, end):
+    ctx.moveTo(offset_x + start[0], offset_y + start[1])
+    ctx.lineTo(offset_x + end[0], offset_y + end[1])
+ 
+# 繪製迷宮
+ctx.beginPath()
+for start, end in maze_lines:
+    draw_line(start, end)
+ctx.stroke()
+ 
+# 定義紅色路徑屬性
+ctx.strokeStyle = "red"
+ctx.lineWidth = 3
+ 
+# 解答路徑
+path_solution = [
+    (100, 0),    
+    (100, 20),   
+    (180, 20),  
+    (180, 100),  
+    (140, 100), 
+    (140, 60), 
+    (100, 60),
+    (100, 100),
+    (25, 100),
+    (25, 180),
+    (65, 180),
+    (65, 140),
+    (140, 140),
+    (140, 180),
+    (100, 180),
+    (100, 200),
+]
+ 
+# 繪製紅色路徑
+ctx.beginPath()
+for i in range(len(path_solution) - 1):
+    start = path_solution[i]
+    end = path_solution[i + 1]
+    draw_line(start, end)
+ctx.stroke()
+</script>
+</p>
 <h1>Final Report</h1>
 <p>期末口頭與書面專題報告 (20%)</p>
 <p>期末口頭專題報告影片:</p>
