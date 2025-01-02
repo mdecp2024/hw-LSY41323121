@@ -144,7 +144,206 @@ img.add_border {
     <div id="tipue_search_content">HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report<br /><h1>w16_exam3</h1>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 4 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<br />HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report</div>
+<p><a href="https://mdecp2024.github.io/hw-LSY41323121/content/Brython.html?src=https://gist.githubusercontent.com/LSY41323121/10bfa72ca9571014cafe8ab272872be9/raw/1837f24c5437dd58e2d9a2e3f4064d62da593ff5/hw1.py">迷宮出口</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/6Su-P4XNJ_c" title="四設計一甲  林紹彥 41323121  w16_exam2" width="853"></iframe></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+ 
+# 設定迷宮畫布大小
+canvas = html.CANVAS(width=300, height=300)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+ 
+# 取得 canvas 的繪圖上下文
+ctx = canvas.getContext("2d")
+ 
+# 標示左上方點座標 (31, 21)
+ctx.font = "12px Arial"
+ctx.fillStyle = "red"
+ctx.fillText("(31, 21)", 35, 35)
+ 
+# 定義藍色線條的屬性
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ 
+# 設定迷宮起點的偏移量
+offset_x, offset_y = 31, 21
+ 
+# 迷宮的線條座標
+maze_lines = [
+    ((0, 0), (86, 0)),
+    ((0, 0), (0, 200)),
+    ((120, 0), (200, 0)),
+    ((200, 0), (200, 200)),
+    ((120, 200), (200, 200)),
+    ((0, 200), (86, 200)),
+    ((86, 157), (86, 200)),
+    ((86, 157), (126, 157)),
+    ((160, 120), (160, 200)),
+    ((160, 120), (50, 120)),
+    ((50, 120), (50, 163)),
+    ((126, 80), (126, 120)),
+    ((0, 80), (86, 80)),
+    ((86, 40), (86, 80)),
+    ((40, 40), (160, 40)),
+    ((160, 40), (160, 83)),
+]
+ 
+# 使用輔助函數來簡化畫線的過程
+def draw_line(start, end):
+    ctx.moveTo(offset_x + start[0], offset_y + start[1])
+    ctx.lineTo(offset_x + end[0], offset_y + end[1])
+ 
+# 繪製迷宮
+ctx.beginPath()
+for start, end in maze_lines:
+    draw_line(start, end)
+ctx.stroke()
+ 
+# 定義紅色路徑屬性
+ctx.strokeStyle = "red"
+ctx.lineWidth = 3
+ 
+# 解答路徑
+path_solution = [
+    (100, 0),    
+    (100, 20),   
+    (180, 20),  
+    (180, 100),  
+    (140, 100), 
+    (140, 60), 
+    (100, 60),
+    (100, 100),
+    (25, 100),
+    (25, 180),
+    (65, 180),
+    (65, 140),
+    (140, 140),
+    (140, 180),
+    (100, 180),
+    (100, 200),
+]
+ 
+# 繪製紅色路徑
+ctx.beginPath()
+for i in range(len(path_solution) - 1):
+    start = path_solution[i]
+    end = path_solution[i + 1]
+    draw_line(start, end)
+ctx.stroke()
+</pre>
+<p></p>
+<div id="brython_div1"></div>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+    brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=500, height=500)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+
+# 取得 canvas 的繪圖上下文
+ctx = canvas.getContext("2d")
+from browser import html
+from browser import document as doc
+ 
+# 設定迷宮畫布大小
+canvas = html.CANVAS(width=300, height=300)
+brython_div = doc["brython_div1"]
+brython_div <= canvas
+ 
+# 取得 canvas 的繪圖上下文
+ctx = canvas.getContext("2d")
+ 
+# 標示左上方點座標 (31, 21)
+ctx.font = "12px Arial"
+ctx.fillStyle = "red"
+ctx.fillText("(31, 21)", 35, 35)
+ 
+# 定義藍色線條的屬性
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ 
+# 設定迷宮起點的偏移量
+offset_x, offset_y = 31, 21
+ 
+# 迷宮的線條座標
+maze_lines = [
+    ((0, 0), (86, 0)),
+    ((0, 0), (0, 200)),
+    ((120, 0), (200, 0)),
+    ((200, 0), (200, 200)),
+    ((120, 200), (200, 200)),
+    ((0, 200), (86, 200)),
+    ((86, 157), (86, 200)),
+    ((86, 157), (126, 157)),
+    ((160, 120), (160, 200)),
+    ((160, 120), (50, 120)),
+    ((50, 120), (50, 163)),
+    ((126, 80), (126, 120)),
+    ((0, 80), (86, 80)),
+    ((86, 40), (86, 80)),
+    ((40, 40), (160, 40)),
+    ((160, 40), (160, 83)),
+]
+ 
+# 使用輔助函數來簡化畫線的過程
+def draw_line(start, end):
+    ctx.moveTo(offset_x + start[0], offset_y + start[1])
+    ctx.lineTo(offset_x + end[0], offset_y + end[1])
+ 
+# 繪製迷宮
+ctx.beginPath()
+for start, end in maze_lines:
+    draw_line(start, end)
+ctx.stroke()
+ 
+# 定義紅色路徑屬性
+ctx.strokeStyle = "red"
+ctx.lineWidth = 3
+ 
+# 解答路徑
+path_solution = [
+    (100, 0),    
+    (100, 20),   
+    (180, 20),  
+    (180, 100),  
+    (140, 100), 
+    (140, 60), 
+    (100, 60),
+    (100, 100),
+    (25, 100),
+    (25, 180),
+    (65, 180),
+    (65, 140),
+    (140, 140),
+    (140, 180),
+    (100, 180),
+    (100, 200),
+]
+ 
+# 繪製紅色路徑
+ctx.beginPath()
+for i in range(len(path_solution) - 1):
+    start = path_solution[i]
+    end = path_solution[i + 1]
+    draw_line(start, end)
+ctx.stroke()
+</script>
+</p><br />HW 4 Exam << <a href='HW 4 Exam.html'>Previous</a> <a href='Final Report.html'>Next</a> >> Final Report</div>
         
     <!-- footer -->
       <div class="container">
